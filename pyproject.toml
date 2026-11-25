@@ -1,0 +1,57 @@
+# Baysöz Labs <baysozlabs@proton.me> — package metadata for archivebound.
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "baysoz-archivebound"
+version = "1.0.0"
+description = "Offline archive-extraction confinement oracle for appsec red teams — Baysöz Labs <baysozlabs@proton.me>"
+readme = "README.md"
+requires-python = ">=3.13"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Baysöz Labs", email = "baysozlabs@proton.me" },
+]
+keywords = [
+  "appsec",
+  "redteam",
+  "zip-slip",
+  "symlink",
+  "sarif",
+  "supply-chain",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Security",
+]
+dependencies = []
+
+[project.scripts]
+archivebound = "baysoz_archivebound.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yazilimbaysoz-svg/baysoz-archivebound"
+Issues = "https://github.com/yazilimbaysoz-svg/baysoz-archivebound/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/baysoz_archivebound"]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3",
+  "ruff>=0.17",
+  "semgrep>=1.100",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
